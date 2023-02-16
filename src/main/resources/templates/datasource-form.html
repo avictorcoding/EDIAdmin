@@ -1,0 +1,104 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Add Employee</title>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+
+	<div class="container">
+
+		<form th:action="@{/saveSchedulerConfig}" action="#"
+			th:object="${schedulerConfig}" method="post">
+			<!-- <div class="d-inline-flex p-2"></div> -->
+			<!-- <div class="dropdown"> -->
+			<!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> -->
+			<!-- Select Frequency button -->
+			<!-- </button> -->
+			<!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> -->
+			<!-- <li><a class="dropdown-item" href="#">Action</a></li> -->
+			<!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
+			<!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+			<!-- </ul> -->
+			<!-- </div> -->
+			<div class="form-group row">
+				<label for="frequency" class="col-sm-2 col-form-label">
+					Frequency: </label>
+				<div class="col-sm-4">
+					<input id="frequency" type="number" th:field="*{frequency}"
+						class="form-control col-3 mb-3" placeholder="Enter Frequency" />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="schedule" class="col-sm-2 col-form-label">
+					Schedule: </label>
+				<div class="col-sm-4">
+					<input type="text" th:field="*{schedule}"
+						class="form-control col-3 mb-3"
+						placeholder="Hourly, Daily, Monthly, Weekly" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="scheduleDateOfMonth" class="col-sm-2 col-form-label">
+					Schedule Date: </label>
+				<div class="col-sm-4">
+					<input type="date" th:field="*{scheduleDateOfMonth}"
+						class="form-control col-3 mb-3" placeholder="Enter Schedule Date" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="scheduleDayOfWeek" class="col-sm-2 col-form-label">
+					Schedule Day: </label>
+				<div class="col-sm-4">
+					<input type="number" th:field="*{scheduleDayOfWeek}"
+						class="form-control col-3 mb-3" placeholder="Enter Schedule Day" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="scheduleTimeOfDay" class="col-sm-2 col-form-label">
+					Schedule Time: </label>
+				<div class="col-sm-4">
+					<input type="time" th:field="*{scheduleTimeOfDay}"
+						class="form-control col-3 mb-3" placeholder="Enter Schedule Time" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="statusCheckBox" class="col-sm-2 col-form-label">
+					Status: </label>
+				<div class="col-sm-4" style="padding-top: 9px;">
+					<input id="statusCheckBox" th:field="*{enabled}" th:checked="*{enabled}" class="form-check-input col-3 mb-3" type="checkbox"  /> 
+					<label id="statusCheckBoxLabel" class="form-check-label  col-3 mb-3"
+								th:text="*{enabled}? ' Active':' Inactive'" style="padding-left: 4px">Inactive</label>
+				</div>
+			</div>
+			<button id="saveForm" style="background-color: #fff200; color: black;" type="submit"
+				class="btn btn-primary col-2">Save</button>
+
+		</form>
+		<hr />
+
+
+	</div>
+	<script type="text/javascript">
+		$('#frequency').tooltip({
+			'trigger' : 'hover',
+			'title' : 'Enter Frequency in hours'
+		});
+		
+		//statusCheckBoxLabelSet();
+		function statusCheckBoxLabelSet(){
+			var checked = $('#statusCheckBox').is(':checked');
+			console.log(checked);
+		    $('#statusCheckBoxLabel').text(checked ? ' Active' : ' Inactive');
+		}
+		$('#statusCheckBox').change(function () {
+			statusCheckBoxLabelSet();
+	    });
+        $('#datasource').load($('.nav-link.active').attr("data-url"), function (result) {
+        });
+
+	</script>
+</body>
+
+</html>

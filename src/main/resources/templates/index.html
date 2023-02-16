@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Dollar General</title>
+        <script
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+        <!-- CSS only -->
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+        crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+    </head>
+    <body>
+        
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <div class="container">
+                <a class="global-header--desktop" href="/"><img  th:src="@{/images/DollareGeneral_Logo.png}" width="300px" height="52px" alt="" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Schedule Admin
+                            </a>
+                        </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </nav>
+                    
+                    <div class="container">
+                    
+                    <div class="row">
+                    <div class="col">
+                    <ul class="nav nav-tabs mt-5" id="myTabs">
+                    <li class="nav-item"><a id="repo" href="#reporting" data-url="/reporting" class="nav-link active">Reporting Scheduler</a></li>
+                    <li class="nav-item"><a id="data"  href="#datasource" data-url="/datasource" class="nav-link">DataSource Scheduler</a></li>
+                    <!-- <li class="nav-item"><a href="#tab3" data-url="/tab3" class="nav-link">Logs</a></li> -->
+                    </ul>
+                    
+                    <div class="tab-content pt-3">
+                    <div class="tab-pane active" id="reporting">Active panel</div>
+                    <div class="tab-pane" id="datasource"></div>
+                    <div class="tab-pane" id="tab3"></div>
+                    </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                    
+                    <script>
+                    $('#myTabs a').click(function (e) {
+	                    e.preventDefault();
+	                    
+	                    var url = $(this).attr("data-url");
+	                    var href = this.hash;
+	                    var pane = $(this);
+	                    
+	                    // ajax load from data-url
+	                    $(href).load(url, function (result) {
+	                    	pane.tab('show');
+	                    });
+                    });
+
+                    $('#reporting').load($('.nav-link.active').attr("data-url"), function (result) {
+                    });
+
+                    
+                    </script>
+                    <script th:inline="javascript">
+						/*<![CDATA[*/
+                    var activateReporting = [[${activateReporting}]];
+                    
+                    // load first tab content
+                    
+//                     if(activateReporting == null){
+//                     	$('#reporting').addClass('active')
+//                         $('#repo').addClass('active');
+// 	                    $('#reporting').load($('.nav-link.active').attr("data-url"), function (result) {
+// 	                    });
+// 	                    }                   	
+//                     else if(activateReporting){
+//                         $('#data').removeClass('active');
+//                        	$('#datasource').addClass('active')
+//                        	$('#repo').addClass('active');
+//                     	$('#reporting').addClass('active')
+//                         $('#reporting').load($('.nav-link.active').attr("data-url"), function (result) {
+// 	                    });}
+//                     else{
+//                        	$('#repo').removeClass('active');
+//                      	$('#reporting').removeClass('active')
+//                        	$('#data').addClass('active');
+//                     	$('#datasource').addClass('active')
+//                        $('#datasource').load($('.nav-link.active').attr("data-url"), function (result) {
+//                         });
+//                     }
+
+						
+						/*]]>*/
+					</script>
+                    
+                    </body>
+                    </html>                    
